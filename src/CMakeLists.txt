@@ -120,7 +120,7 @@ elseif(CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 add_library(luabind ${LUABIND_SRCS} ${LUABIND_API} ${LUABIND_DETAIL_API})
-target_link_libraries(luabind ${LUA_LIBRARIES} ${LUABIND_EXTRA_LIBS})
+target_link_libraries(luabind lua dl)
 set_property(TARGET
 	luabind PROPERTY
 	COMPILE_FLAGS

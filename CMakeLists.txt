@@ -23,10 +23,10 @@ if(NOT Boost_FOUND)
 	find_package(Boost REQUIRED)
 endif()
 
-if(NOT LUA_FOUND AND NOT LUA51_FOUND)
-	find_package(Lua51 REQUIRED)
-	set(LUA_INCLUDE_DIRS "${LUA_INCLUDE_DIR}")
-endif()
+#if(NOT LUA_FOUND AND NOT LUA51_FOUND)
+#	find_package(Lua51 REQUIRED)
+#	set(LUA_INCLUDE_DIRS "${LUA_INCLUDE_DIR}")
+#endif()
 
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	# We are the top-level project
