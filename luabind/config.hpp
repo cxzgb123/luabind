@@ -124,6 +124,34 @@ namespace std
 # define LUABIND_API
 #endif
 
+// If you use Boost <= 1.46 but your compiler is C++11 compliant and marks
+// destructors as noexcept by default, you need to define LUABIND_USE_NOEXCEPT.
+#if (   !defined(BOOST_NO_NOEXCEPT) \
+     && !defined(BOOST_NO_CXX11_NOEXCEPT) \
+     && BOOST_VERSION >= 104700)
+#    define LUABIND_USE_NOEXCEPT
+#endif
+
+#ifndef LUABIND_MAY_THROW
+#    ifdef BOOST_NOEXCEPT_IF
+#        define LUABIND_MAY_THROW BOOST_NOEXCEPT_IF(false)
+#    elif defined(LUABIND_USE_NOEXCEPT)
+#        define LUABIND_MAY_THROW noexcept(false)
+#    else
+#       define LUABIND_MAY_THROW
+#    endif
+#endif
+
+#ifndef LUABIND_NOEXCEPT
+#    ifdef BOOST_NOEXCEPT_OR_NOTHROW
+#        define LUABIND_NOEXCEPT BOOST_NOEXCEPT_OR_NOTHROW
+#    elif defined(LUABIND_USE_NOEXCEPT)
+#        define LUABIND_NOEXCEPT noexcept
+#    else
+#       define LUABIND_NOEXCEPT throw()
+#    endif
+#endif
+
 namespace luabind {
 
 LUABIND_API void disable_super_deprecation();

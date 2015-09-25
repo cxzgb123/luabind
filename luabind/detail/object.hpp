@@ -1118,7 +1118,7 @@ namespace adl
           other.value_wrapper = 0;
       }
 
-      ~call_proxy()
+      ~call_proxy() LUABIND_MAY_THROW
       {
           if (value_wrapper)
               call((detail::null_type*)0);
