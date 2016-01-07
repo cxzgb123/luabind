@@ -46,9 +46,9 @@ include_directories(${Boost_INCLUDE_DIRS}
 
 add_subdirectory(src)
 
-if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
-	if(BUILD_TESTING)
-		add_subdirectory(test)
-	endif()
-	add_subdirectory(doc)
-endif()
+#if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+#	if(BUILD_TESTING)
+#		add_subdirectory(test)
+#	endif()
+#	add_subdirectory(doc)
+#endif()
